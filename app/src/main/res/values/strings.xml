@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Frases do Chuck Norris</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="next">Próxima</string>
+    <string name="wait">.....</string>
+
+</resources>
