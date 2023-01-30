@@ -17,6 +17,4 @@ class PhraseRepositoryImpl constructor(private val phraseRemoteDataSource: Phras
             throw e
         }
     }
-
-
 }

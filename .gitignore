@@ -1,3 +1,4 @@
+**/build
 /build
 /captures
 .externalNativeBuild
@@ -77,6 +78,9 @@ gen-external-apklibs
 
 ## Directory-based project format:
 .idea/
+/.idea/workspace.xml
+/.idea/libraries
+
 # if you remove the above rule, at least ignore the following:
 
 # User-specific stuff:
@@ -139,6 +143,7 @@ gradle-app.setting
 
 
 ### OSX ###
+*/.DS_Store
 .DS_Store
 .AppleDouble
 .LSOverride
