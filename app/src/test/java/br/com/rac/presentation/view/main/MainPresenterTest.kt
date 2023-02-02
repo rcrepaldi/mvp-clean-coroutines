@@ -38,9 +38,7 @@ class MainPresenterTest {
             val phrase = "Lorem ipsum dolor sit amet"
             val expectedPhrase = Phrase("37846932", "2", "7", "fulano", phrase)
             `when`(phraseUseCase.requestPhrase(randomPosition)).thenReturn(flow {
-                emit(
-                    expectedPhrase
-                )
+                emit(expectedPhrase)
             })
 
             // Action

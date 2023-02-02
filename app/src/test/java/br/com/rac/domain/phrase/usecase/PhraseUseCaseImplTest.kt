@@ -2,25 +2,22 @@ package br.com.rac.domain.phrase.usecase
 
 import br.com.rac.domain.phrase.model.Phrase
 import br.com.rac.domain.phrase.repository.PhraseRepository
-import io.mockk.mockk
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
 import org.koin.test.AutoCloseKoinTest
-import org.koin.test.inject
 import org.mockito.Mock
-import org.mockito.Mockito.*
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
+import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class PhraseUseCaseImplTest: AutoCloseKoinTest() {
+class PhraseUseCaseImplTest : AutoCloseKoinTest() {
 
     @Mock
     private lateinit var phraseRepository: PhraseRepository
@@ -35,14 +32,23 @@ class PhraseUseCaseImplTest: AutoCloseKoinTest() {
     fun `test requestPhrase`() {
         runBlocking {
 
+            // Arrange
             val phrase = "Hello world!"
             val expectedPhrase = Phrase("37846932", "2", "7", "fulano", phrase)
             val phraseNumber = "123"
-            `when`(phraseRepository.requestPhrase(phraseNumber)).thenReturn(flow { emit(expectedPhrase) })
+            `when`(phraseRepository.requestPhrase(phraseNumber)).thenReturn(flow {
+                emit(
+                    expectedPhrase
+                )
+            })
 
-            val result = phraseRepository.requestPhrase(phraseNumber).first()
 
-            assertEquals(expectedPhrase, result)
+            // Action
+            val result = phraseRepository.requestPhrase(phraseNumber).single().phrase
+
+
+            // Assert
+            assertEquals(expectedPhrase.phrase, result)
             verify(phraseRepository).requestPhrase(phraseNumber)
 
         }
