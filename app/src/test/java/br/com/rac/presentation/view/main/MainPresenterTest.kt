@@ -22,9 +22,6 @@ class MainPresenterTest {
     @Mock
     private lateinit var phraseUseCase: PhraseUseCase
 
-    @Mock
-    private lateinit var mainContract: MainContract
-
     @Before
     fun setUp() {
         // Inicializa as anotações de mock
